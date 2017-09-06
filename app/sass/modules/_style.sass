@@ -1,0 +1,128 @@
+//  *** -----  Main CSS  ----- ***
+
+body
+  background-color: $light-grey
+  color: $ss-light-brown
+  font-family: $body-copy
+  margin: 0
+  padding: 0
+
+.window
+  background-color: $primary-background
+  margin: 0 auto
+  max-width: 920px
+
+h1,
+h2,
+h3
+  font-family: $header-copy
+  font-weight: 700
+
+.main
+  //border-left: 1px dashed $black
+  //border-right: 1px dashed $black
+  padding: 0 10px
+
+  h1
+    color: $ss-silver
+    font-size: 2.2em
+    text-align: center
+
+.navigation-bar
+  background-color: $primary-background
+  display: flex
+  list-style-type: none
+  margin: 0
+  padding: 0
+
+  li
+    background-color: $ss-light-purple
+    border-radius: 20px
+    box-shadow: 0 8px 16px 0 rgba($black, .2)
+    margin: 10px
+    padding: 5px 10px
+
+    &:hover
+      background-color: lighten($ss-light-purple, 15%)
+
+    &:not(:target):not(:hover) > ul
+      display: none
+      //visibility: collapse
+
+    ul
+      display: block
+      left: -35px
+      list-style-type: none
+      margin: 0
+      position: absolute
+
+      li
+        background-color: $light-grey
+        border-radius: 20px
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2)
+        margin-bottom: 3px
+        padding: 4px 20px
+        z-index: 1
+        &:hover
+          a
+            color: darken($ss-silver, 10%)
+
+        a
+          color: $ss-silver
+
+a
+  color: $purple2
+  text-decoration: none
+
+#login
+  margin-left: auto
+
+#nav-projects
+  position: relative
+
+.box
+  background-color: $light-grey
+  border: 1px solid $black
+  border-radius: 10px
+  display: flex
+  height: 320px
+  justify-content: space-around
+  margin-bottom: 15px
+  padding: 0 10px
+
+.item
+  align-items: center
+  background-color: $primary-background
+  border: 1px $dark-grey solid
+  border-radius: 8px
+  display: flex
+  flex-direction: column
+  flex-grow: 0
+  height: auto
+  margin: 10px
+  padding: 5px
+  padding-bottom: 10px
+  width: 30%
+
+  button
+    margin-top: auto
+
+    &:hover
+      background-color: $ss-silver
+
+footer
+  background-color: $light-grey
+  font-size: .8em
+  height: 30px
+  text-align: center
+  width: 100%
+
+  .copy
+    margin-top: 0
+    padding-top: 10px
+
+  a
+    color: $ss-brown
+
+    &:hover
+      text-decoration: underline
