@@ -13,7 +13,7 @@ gulp.task('prefixer', function() {
       browsers:['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('app/dist/css'))
 });
 
 gulp.task('sass', function () {
