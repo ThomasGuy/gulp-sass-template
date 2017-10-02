@@ -43,18 +43,18 @@ gulp.task('watch', function() {
 
 // Optimizing Images
 gulp.task('images', function() {
-  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  return gulp.src('app/img/**/*.+(png|jpg|jpeg|gif|svg)')
     // Caching images that ran through imagemin
     .pipe(cache(imagemin({
       interlaced: true,
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('app/dist/images'))
 });
 
 // Copying fonts
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('app/dist/fonts'))
 })
 
 // Build Sequences
