@@ -2,6 +2,7 @@
   background-image: url("/app/img/sky1_banner2.jpg");
   background-size: 100% 100%;
   border-bottom: 10px solid #be9f57;
+  -webkit-box-shadow: rgba(190, 159, 87, 0.4);
   box-shadow: rgba(190, 159, 87, 0.4);
   height: 125px; }
 

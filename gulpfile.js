@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+let gulp = require('gulp');
 
 // Require plugins
 var sass = require('gulp-sass');
@@ -37,7 +37,11 @@ const path= {
   image: {
     src: 'app/img/**/*.*',
     dest: 'dist/img/'
-  }
+  },
+  autoPrefix: {
+    src: 'app/css/**/*.css',
+    dest: 'app/css'
+    }
 };
 
 // Error helper
@@ -100,7 +104,7 @@ gulp.task('browserify', function() {
   return browserify('./app/js/app.js')
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dist/js'));
 })
 
 // node Staic server
@@ -118,10 +122,19 @@ gulp.task('watch', function() {
   gulp.watch(path.script.src, ['script', browserSync.reload]);
 });
 
+gulp.task('autoPrefix', function() {
+  return gulp.src(path.autoPrefix.src)
+    .pipe(autoPrefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(gulp.dest(path.autoPrefix.dest));
+});
+
 // Build Sequences
 // ---------------
 gulp.task('default', function(cb) {
-  runSequence('sass', 'browserSync', 'watch', cb);
+  runSequence('sass', 'autoPrefix', 'browserSync', 'watch', cb);
 });
 
 gulp.task('clean', function(cb) {
@@ -129,5 +142,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', function(cb) {
-  runSequence('sass', 'script', 'images', 'styles', cb);
+  runSequence('sass', 'autoPrefix', 'script', 'images', 'styles', cb);
 });
