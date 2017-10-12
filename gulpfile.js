@@ -2,66 +2,132 @@ var gulp = require('gulp');
 
 // Require plugins
 var sass = require('gulp-sass');
-var browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync');
 var imagemin = require('gulp-imagemin');
 var runSequence = require('run-sequence');
-var autoprefixer = require('gulp-autoprefixer');
+var autoPrefixer = require('gulp-autoprefixer');
+var jshint = require('gulp-jshint');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var connect = require('connect');
+var serve = require('serve-static');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var plumber = require('gulp-plumber');
+var beeper = require('beeper');
+var del = require('del');
+var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('prefixer', function() {
-  return gulp.src('app/css/*.css')
-    .pipe(autoprefixer({
-      browsers:['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(gulp.dest('app/dist/css'))
-});
-
-gulp.task('sass', function () {
-  return gulp.src('app/sass/**/*.sass')
-    .pipe(sass())
-    .pipe(gulp.dest('app/css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
-});
-
-gulp.task('browserSync', function() {
-  browserSync.init({
-    server: {
-      baseDir: 'app'
+const path= {
+  style: {
+    src: {
+      normalize: 'app/css/normalize.css',
+      main: 'app/css/**/*.css'
     },
-  });
+    dest: 'dist/css/'
+  },
+  script: {
+    src: 'app/js/**/*.js',
+    dest: 'dist/js/'
+  },
+  sass: {
+    src: 'app/sass/**/*.sass',
+    dest: 'app/css/'
+  },
+  image: {
+    src: 'app/img/**/*.*',
+    dest: 'dist/img/'
+  }
+};
+
+// Error helper
+function onError(err) {
+  beeper();
+  console.log('Name:', err.name);
+  console.log('Reason:', err.reason);
+  console.log('File:', err.file);
+  console.log('Line:', err.line);
+  console.log('Column:', err.column);
+}
+
+// Gulp compile sass
+gulp.task('sass', function() {
+  return gulp.src(path.sass.src)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(sass())
+    .pipe(gulp.dest(path.sass.dest))
+
 });
 
-// Gulp watch syntax
-gulp.task('watch', function() {
-  gulp.watch('app/sass/**/*.sass', ['sass']);
-  // Reloads the browser whenever HTML or JS files change
-  gulp.watch('app/*.html', browserSync.reload);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
+// Styles Task
+gulp.task('styles', function() {
+    gulp.src([path.style.src.normalize, path.style.src.main])
+        .pipe(concat('site.css'))
+        .pipe(gulp.dest(path.style.dest));
 });
 
-// Optimizing Images
+// Gulp script test, combine and minify
+gulp.task('script', function() {
+  return gulp.src(path.script.src)
+    .pipe(sourcemaps.init())
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(path.script.dest));
+});
+
+// Images Task
 gulp.task('images', function() {
-  return gulp.src('app/img/**/*.+(png|jpg|jpeg|gif|svg)')
-    // Caching images that ran through imagemin
-    .pipe(cache(imagemin({
-      interlaced: true,
-    })))
-    .pipe(gulp.dest('app/dist/images'))
+    gulp.src(path.image.src)
+        .pipe(imagemin())
+        .pipe(gulp.dest(path.image.dest));
 });
 
-// Copying fonts
-gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('app/dist/fonts'))
+// Gulp browserSync
+gulp.task('browserSync', function(cb) {
+  return browserSync({
+    server: {
+      baseDir: './'
+    }
+  }, cb);
+});
+
+gulp.task('browserify', function() {
+  return browserify('./app/js/app.js')
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('dist/js'))
 })
+
+// node Staic server
+gulp.task('server', function() {
+  return connect().use(serve(__dirname))
+    .listen(8080)
+    .on('listening', function() {
+      console.log('Server running on port:8080');
+    });
+});
+
+gulp.task('watch', function() {
+  gulp.watch(path.sass.src, ['sass', browserSync.reload]);
+  gulp.watch('./index.html', browserSync.reload);
+  gulp.watch(path.script.src, ['script', browserSync.reload]);
+});
 
 // Build Sequences
 // ---------------
+gulp.task('default', function(cb) {
+  runSequence('sass', 'browserSync', 'watch', cb);
+});
 
-gulp.task('default', function(callback) {
-  runSequence(['sass', 'prefixer', 'browserSync'], 'watch',
-    callback
-  )
-})
+gulp.task('clean', function(cb) {
+  del(['dist'], cb);
+});
+
+gulp.task('build', function(cb) {
+  runSequence('sass', 'script', 'images', 'styles', cb);
+});

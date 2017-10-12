@@ -1,170 +1,60 @@
-//  *** -----  Main CSS  ----- ***
-//
+html
+  height: 100%
 
 body
-  background-color: $light-grey
-  color: $ss-light-brown
-  font-family: $body-copy
-  margin: 0
-  padding: 0
+  background-color: $off-white
+
+a
+  text-decoration: none
+
+h1,
+h2,
+h3
+  font-family: Raleway, sans-serif
+  font-weight: 700
+  margin-top: 5px
+
+*,
+*:after,
+*:before {
+  +border-box()
+}
 
 .window
   background-color: $primary-background
+  color: $dark-grey
+  font-size: 18px
   margin: 0 auto
-  max-width: 920px
+  max-width: 1020px
 
-  h1
-    font-family: $header-copy
-    font-size: 2.2em
-    font-weight: 700
-
-  h2,
-  h3
-    font-family: $header-copy
-
-  a
-    color: $purple2
-    text-decoration: none
-
-
-.main
-  padding: 0 10px
-
-  h1
-    color: $ss-silver
-    text-align: center
-
-.navigation-bar
-  background-color: $primary-background
-  display: flex
-  list-style-type: none
-  margin: 0
-  padding: 0
-
-  li
-    background-color: $ss-light-purple
-    border-radius: 20px
-    box-shadow: 0 8px 16px 0 rgba($black, .2)
-    margin: 10px
-    padding: 5px 10px
-
-    &:hover
-      background-color: lighten($ss-light-purple, 10%)
-
-    &:not(:target):not(:hover) > ul
-      display: none
-
-    ul
-      display: block
-      left: -35px
-      list-style-type: none
-      margin: 0
-      position: absolute
-
-      li
-        background-color: $light-grey
-        border-radius: 20px
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2)
-        margin-bottom: 3px
-        padding: 4px 20px
-        z-index: 1
-
-        a
-          color: $ss-silver
-
-        &:hover
-          a
-            color: $primary-link-color
-
-#login
-  margin-left: auto
-
-#nav-projects
-  position: relative
-
-.box
-  background-color: $light-grey
-  border: 1px solid $black
-  border-radius: 10px
-  display: flex
-  height: 320px
-  justify-content: space-around
-  margin-bottom: 15px
-  padding: 0 10px
-
-.item
-  align-items: center
-  background-color: $primary-background
-  border: 1px $dark-grey solid
-  border-radius: 8px
-  display: flex
-  flex-direction: column
-  flex-grow: 0
-  height: auto
-  margin: 10px
-  padding: 5px
-  padding-bottom: 10px
-  width: 30%
-
-  button
-    margin-top: auto
-
-    &:hover
-      background-color: $ss-silver
-
-.multiCol
-  background-color: $off-white
-  border: $secondary-border-color $border-size $border-type
-  border-radius: 10px
-  column-gap: 2em
-  column-rule: 1px solid $ss-silver
-  columns:  14em
-  margin: auto
-  padding: 15px
-  position: relative
-
-  p
-    padding: .25em
-
-  figure
-    margin: 0
-    padding: 0
-    width: 86%
-
-  figcaption
-    break-after: column
-    color: $dark-grey
-    font-size: .7em
-
-  img
-    width: 100%
-
-  h1
-    border-bottom: 1px $ss-silver solid
-    color: $ss-brown
-    column-span: all
-    margin: 0 0 .5em 0
-    padding: 2px 0
-    text-align: center
+.row
+  border-top: 1px solid $ss-gold
+  clear: both
+  display: inline-block
+  padding: 10px
 
   h2
-    font-size: 1.4em
-    font-weight: 400
-    margin: .25em 0
-    padding: 0
+    margin-top: 10px
 
-footer
-  background-color: $light-grey
-  font-size: .8em
-  height: 30px
+.photo
+  float: left
+  height: auto
+  margin-right: 20px
+  padding-left: 5px
+  width: 35%
+
+.photo2
+  float: right
+  height: auto
+  margin-left: 20px
+  padding-right: 5px
+  width: 45%
+
+.title
+  display: block
   text-align: center
 
-  .copy
-    margin-top: 0
-    padding-top: 10px
-
-  a
-    color: $ss-brown
-
-    &:hover
-      text-decoration: underline
+  h1
+    //border-bottom: 1px solid $dark-grey
+    line-height: 1.6
+    text-decoration: underline

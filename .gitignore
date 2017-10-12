@@ -27,7 +27,7 @@ build/Release
 
 # Build directories
 public
-app/dist/**/*.*
+app/dist/*
 app/css
 
 # Dependency directory
