@@ -142,5 +142,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', function(cb) {
-  runSequence('sass', 'autoPrefix', 'script', 'images', 'styles', cb);
+  runSequence( 'sass', 'autoPrefix', 'script', 'images', 'styles', cb);
 });

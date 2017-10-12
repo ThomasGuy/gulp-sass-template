@@ -77,6 +77,7 @@ figure {
  */
 
 hr {
+  -webkit-box-sizing: content-box;
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
@@ -113,6 +114,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted; /* 2 */
 }
 
@@ -320,6 +322,7 @@ fieldset {
  */
 
 legend {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
@@ -353,6 +356,7 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -447,17 +451,15 @@ template {
 }
 
 .banner {
-  background-image: url("/app/img/sky1_banner2.jpg");
+  background-image: url("/dist/img/sky1_banner2.jpg");
   background-size: 100% 100%;
-  height: 125px; }
+  border-bottom: 6px solid #f8cf5a;
+  height: 150px; }
 
 .logo {
-  font-family: Raleway, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 2.6rem;
   margin-top: 0;
   padding-left: 40px;
-  padding-top: 10px;
   position: relative; }
   .logo span {
     color: #f5f5f5;
@@ -465,7 +467,7 @@ template {
     font-weight: 400;
     position: absolute;
     right: 20px;
-    top: 90px; }
+    top: 115px; }
 
 html {
   height: 100%; }
@@ -476,44 +478,53 @@ body {
 a {
   text-decoration: none; }
 
+h1,
+h2,
+h3 {
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  margin-top: 5px; }
+
 .window {
   background-color: #d9d7b0;
   color: #575757;
+  font-size: 18px;
   margin: 0 auto;
-  max-width: 980px; }
-
-.main {
-  margin: 10 auto; }
+  max-width: 1020px; }
 
 .row {
-  clear: left;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 10px;
-  width: 95%; }
+  border-top: 1px solid #be9f57;
+  clear: both;
+  display: inline-block;
+  padding: 10px; }
   .row h2 {
-    margin-top: 0; }
+    margin-top: 10px; }
 
 .photo {
   float: left;
   height: auto;
   margin-right: 20px;
+  padding-left: 5px;
   width: 35%; }
 
 .photo2 {
   float: right;
   height: auto;
   margin-left: 20px;
+  padding-right: 5px;
   width: 45%; }
 
 .title {
+  display: block;
   text-align: center; }
   .title h1 {
-    border-bottom: 1px solid #575757; }
+    line-height: 1.6;
+    text-decoration: underline; }
 
 .copyright {
   clear: both;
   color: #575757;
+  font-size: .6em;
   padding-bottom: 10px;
   text-align: center; }
 
