@@ -1,0 +1,81 @@
+.banner {
+  background-image: url("/app/img/sky1_banner2.jpg");
+  background-size: 100% 100%;
+  border-bottom: 10px solid #be9f57;
+  box-shadow: rgba(190, 159, 87, 0.4);
+  height: 125px; }
+
+.logo {
+  font-size: 1.6rem;
+  margin-top: 0;
+  padding-left: 40px;
+  position: relative; }
+  .logo span {
+    color: #f5f5f5;
+    font-size: 1.8rem;
+    font-weight: 400;
+    position: absolute;
+    right: 20px;
+    top: 90px; }
+
+html {
+  height: 100%; }
+
+body {
+  background-color: #f5f5f5; }
+
+a {
+  text-decoration: none; }
+
+h1,
+h2,
+h3 {
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  margin-top: 5px; }
+
+.window {
+  background-color: #d9d7b0;
+  color: #575757;
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 1020px; }
+
+.row {
+  border-top: 1px solid #be9f57;
+  clear: both;
+  display: inline-block;
+  padding: 10px; }
+  .row h2 {
+    margin-top: 10px; }
+
+.photo {
+  float: left;
+  height: auto;
+  margin-right: 20px;
+  padding-left: 5px;
+  width: 35%; }
+
+.photo2 {
+  float: right;
+  height: auto;
+  margin-left: 20px;
+  padding-right: 5px;
+  width: 45%; }
+
+.title {
+  display: block;
+  text-align: center; }
+  .title h1 {
+    line-height: 1.6;
+    text-decoration: underline; }
+
+.copyright {
+  clear: both;
+  color: #575757;
+  font-size: .6em;
+  padding-bottom: 10px;
+  text-align: center; }
+
+a {
+  color: #000; }
