@@ -2,21 +2,49 @@
   background-image: url("/dist/img/sky1_banner2.jpg");
   background-size: 100% 100%;
   border-bottom: 6px solid #f8cf5a;
-  height: 150px; }
+  height: 120px; }
+  @media (min-width: 500px) {
+    .banner {
+      height: 135px; } }
+  @media (min-width: 760px) {
+    .banner {
+      height: 150px; } }
 
 .logo {
-  font-size: 1.4rem;
-  margin-top: 10;
-  padding-left: 40px;
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-top: 0;
+  padding-top: 5px;
   position: relative;
-  top: 10px; }
+  text-align: center; }
+  @media (min-width: 500px) {
+    .logo {
+      font-size: 1.6em; } }
+  @media (min-width: 760px) {
+    .logo {
+      font-size: 2em; } }
+  @media (min-width: 760px) {
+    .logo {
+      font-size: 2.3em; } }
   .logo span {
     color: #f5f5f5;
-    font-size: 1.8rem;
+    font-size: .5em;
     font-weight: 400;
     position: absolute;
     right: 20px;
-    top: 105px; }
+    top: 88px; }
+    @media (min-width: 500px) {
+      .logo span {
+        top: 95px; } }
+    @media (min-width: 760px) {
+      .logo span {
+        font-size: .4em;
+        top: 104px; } }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box; }
 
 html {
   height: 100%; }
@@ -39,13 +67,17 @@ h3 {
   color: #575757;
   font-size: 18px;
   margin: 0 auto;
-  max-width: 1020px; }
+  max-width: 980px; }
 
 .row {
   border-top: 1px solid #be9f57;
   clear: both;
   display: inline-block;
-  padding: 10px 5px; }
+  padding: 10px 5px;
+  width: 100%; }
+  @media (min-width: 760px) {
+    .row {
+      margin: 5px 25px; } }
   .row h2 {
     margin-top: 10px; }
 
@@ -53,13 +85,13 @@ h3 {
   float: left;
   height: auto;
   margin-right: 20px;
-  width: 35%; }
+  width: 40%; }
 
 .photo2 {
   float: right;
   height: auto;
   margin-left: 20px;
-  width: 45%; }
+  width: 50%; }
 
 .title {
   display: block;
@@ -68,13 +100,31 @@ h3 {
     font-size: 1.5em;
     line-height: 1.6;
     text-decoration: underline; }
+    @media (min-width: 500px) {
+      .title h1 {
+        font-size: 1.8em; } }
+    @media (min-width: 760px) {
+      .title h1 {
+        font-size: 2.2em;
+        text-decoration: none; } }
+    @media (min-width: 1000px) {
+      .title h1 {
+        font-size: 2.6em; } }
 
-.copyright {
+.contact {
+  clear: both;
+  border-top: 1px solid #be9f57;
+  padding-top: 5px;
+  text-align: center; }
+
+footer {
   clear: both;
   color: #575757;
-  font-size: .6em;
-  padding-bottom: 10px;
   text-align: center; }
+
+.copyright {
+  font-size: .6em;
+  padding-bottom: 10px; }
 
 a {
   color: #000; }

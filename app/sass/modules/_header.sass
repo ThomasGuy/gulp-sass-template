@@ -2,19 +2,38 @@
   background-image: url('/dist/img/sky1_banner2.jpg')
   background-size: 100% 100%
   border-bottom: 6px solid $trim
-  height: 40px
+  height: 120px
+
+  +mq-small-up
+    height: 135px
+  +mq-medium-up
+    height: 150px
 
 .logo
-  font-size: 1.4rem
+  font-size: 1.3em
+  font-weight: 700
   margin-top: 0
-  padding-left: 40px
+  padding-top: 5px
   position: relative
-  top: 10px
+  text-align: center
+
+  +mq-small-up
+    font-size: 1.6em
+  +mq-medium-up
+    font-size: 2em
+  +mq-medium-up
+    font-size: 2.3em
 
   span
     color: $off-white
-    font-size: 1.8rem
+    font-size: .5em
     font-weight: 400
     position: absolute
     right: 20px
-    top: 105px
+    top: 88px
+
+    +mq-small-up
+      top: 95px
+    +mq-medium-up
+      font-size: .4em
+      top: 104px

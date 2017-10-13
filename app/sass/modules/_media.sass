@@ -1,0 +1,24 @@
+
+//*** Media queeries small and up ***/
+=mq-small-up
+  @media (min-width: $screen-small)
+    @content
+
+//*****     Media querie 'Break-point' only    ***/
+=mq-small
+  @media (min-width: $screen-small) and (max-width: $screen-medium – 1px)
+    @content
+
+=mq-medium-up
+  @media (min-width: $screen-medium)
+    @content
+
+//***  break-point only  ***/
+=mq-medium
+  @media (min-width: $screen-medium) and (max-width: $screen-large – 1px)
+    @content
+
+// Large breakpoint and up
+=mq-large-up
+  @media (min-width: $screen-large)
+    @content

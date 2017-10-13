@@ -2,7 +2,6 @@ options:
   formatter: stylish
 files:
   include: '/app/sass/**/*.s+(a|c)ss'
-  exclude: '/app/sass/modules/_mediaQs.sass'
 rules:
   # Extends
   extends-before-mixins: 1
