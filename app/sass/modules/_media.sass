@@ -4,6 +4,10 @@
   @media (min-width: $screen-small)
     @content
 
+=mq-small-down
+  @media screen and (max-width: $screen-small)
+    @content
+
 //*****     Media querie 'Break-point' only    ***/
 =mq-small
   @media (min-width: $screen-small) and (max-width: $screen-medium – 1px)
@@ -11,6 +15,10 @@
 
 =mq-medium-up
   @media (min-width: $screen-medium)
+    @content
+
+=mq-medium-down
+  @media screen and (max-width: $screen-medium)
     @content
 
 //***  break-point only  ***/
@@ -21,4 +29,8 @@
 // Large breakpoint and up
 =mq-large-up
   @media (min-width: $screen-large)
+    @content
+
+=mq-large-down
+  @media screen and (max-width: $screen-large)
     @content

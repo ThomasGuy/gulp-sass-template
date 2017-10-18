@@ -41,7 +41,11 @@ const path= {
   autoPrefix: {
     src: 'app/css/**/*.css',
     dest: 'app/css'
-    }
+  },
+  html: {
+    src: 'app/*.html',
+    dest: 'dist'
+  }
 };
 
 // Error helper
@@ -95,7 +99,7 @@ gulp.task('images', function() {
 gulp.task('browserSync', function(cb) {
   return browserSync({
     server: {
-      baseDir: './'
+      baseDir: 'app'
     }
   }, cb);
 });
@@ -118,7 +122,7 @@ gulp.task('server', function() {
 
 gulp.task('watch', function() {
   gulp.watch(path.sass.src, ['sass', browserSync.reload]);
-  gulp.watch('./index.html', browserSync.reload);
+  gulp.watch(path.thml.src, browserSync.reload);
   gulp.watch(path.script.src, ['script', browserSync.reload]);
 });
 
