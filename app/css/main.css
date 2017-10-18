@@ -1,0 +1,19 @@
+body {
+  background-color: #f5f5f5; }
+
+h1,
+h2,
+h3 {
+  font-family: Raleway, sans-serif;
+  font-weight: 700; }
+
+footer {
+  color: #575757;
+  text-align: center; }
+
+.copyright {
+  font-size: .6em;
+  padding-bottom: 10px; }
+
+a {
+  color: #000; }

@@ -122,7 +122,7 @@ gulp.task('server', function() {
 
 gulp.task('watch', function() {
   gulp.watch(path.sass.src, ['sass', browserSync.reload]);
-  gulp.watch(path.thml.src, browserSync.reload);
+  gulp.watch(path.html.src, browserSync.reload);
   gulp.watch(path.script.src, ['script', browserSync.reload]);
 });
 
