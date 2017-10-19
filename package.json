@@ -12,6 +12,7 @@
     "sass"
   ],
   "author": "TWGuy",
+  "private": true,
   "license": "ISC",
   "devDependencies": {
     "beeper": "^1.1.1",
@@ -33,5 +34,9 @@
     "run-sequence": "^2.2.0",
     "serve-static": "^1.13.1",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

@@ -65,8 +65,14 @@ gulp.task('sass', function() {
       errorHandler: onError
     }))
     .pipe(sass())
+    .pipe(autoPrefixer())
     .pipe(gulp.dest(path.sass.dest))
 
+});
+
+gulp.task('html', function() {
+  return gulp.src(path.html.src)
+    .pipe(gulp.dest(path.html.dest))
 });
 
 // Styles Task
@@ -128,17 +134,14 @@ gulp.task('watch', function() {
 
 gulp.task('autoPrefix', function() {
   return gulp.src(path.autoPrefix.src)
-    .pipe(autoPrefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(autoPrefixer())
     .pipe(gulp.dest(path.autoPrefix.dest));
 });
 
 // Build Sequences
 // ---------------
 gulp.task('default', function(cb) {
-  runSequence('sass', 'autoPrefix', 'browserSync', 'watch', cb);
+  runSequence('sass', 'browserSync', 'watch', cb);
 });
 
 gulp.task('clean', function(cb) {
@@ -146,5 +149,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', function(cb) {
-  runSequence( 'sass', 'autoPrefix', 'script', 'images', 'styles', cb);
+  runSequence( 'sass', 'script', 'images', 'styles', 'html', cb);
 });
