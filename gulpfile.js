@@ -9,6 +9,7 @@ var autoPrefixer = require('gulp-autoprefixer');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var uglifycss = require('gulp-uglifycss');
 var connect = require('connect');
 var serve = require('serve-static');
 var browserify = require('browserify');
@@ -20,10 +21,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 const path= {
   style: {
-    src: {
-      normalize: 'app/css/normalize.css',
-      main: 'app/css/**/*.css'
-    },
+    src: 'app/css/*.css',
     dest: 'dist/css/'
   },
   script: {
@@ -31,7 +29,7 @@ const path= {
     dest: 'dist/js/'
   },
   sass: {
-    src: 'app/sass/**/*.sass',
+    src: 'app/css/sass/**/*.sass',
     dest: 'app/css/'
   },
   image: {
@@ -40,11 +38,15 @@ const path= {
   },
   autoPrefix: {
     src: 'app/css/**/*.css',
-    dest: 'app/css'
+    dest: 'app/css/'
   },
   html: {
     src: 'app/*.html',
-    dest: 'dist'
+    dest: 'dist/'
+  },
+  font: {
+    src: 'app/fonts/*.*',
+    dest: 'dist/fonts/'
   }
 };
 
@@ -77,9 +79,13 @@ gulp.task('html', function() {
 
 // Styles Task
 gulp.task('styles', function() {
-    gulp.src([path.style.src.normalize, path.style.src.main])
-        .pipe(concat('site.css'))
-        .pipe(gulp.dest(path.style.dest));
+  return gulp.src([path.style.src])
+    .pipe(concat('main.css'))
+    .pipe(uglifycss({
+      "maxLineLen": 120,
+      "uglyComments": true
+    }))
+    .pipe(gulp.dest(path.style.dest));
 });
 
 // Gulp script test, combine and minify
@@ -96,9 +102,14 @@ gulp.task('script', function() {
 
 // Images Task
 gulp.task('images', function() {
-    gulp.src(path.image.src)
-        .pipe(imagemin())
-        .pipe(gulp.dest(path.image.dest));
+  return gulp.src(path.image.src)
+    .pipe(imagemin())
+    .pipe(gulp.dest(path.image.dest));
+});
+
+gulp.task('fonts', function() {
+  return gulp.src(path.font.src)
+    .pipe(gulp.dest(path.font.dest));
 });
 
 // Gulp browserSync
@@ -149,5 +160,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('build', function(cb) {
-  runSequence( 'sass', 'script', 'images', 'styles', 'html', cb);
+  runSequence( 'sass', 'script', 'images', 'styles', 'fonts', 'html', cb);
 });

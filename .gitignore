@@ -28,7 +28,7 @@ build/Release
 
 # Build directories
 public
-dist/
+dist
 
 
 # Dependency directory
