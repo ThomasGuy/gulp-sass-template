@@ -19,7 +19,7 @@ const paths = {
     dest: 'dist/js/',
   },
   sass: {
-    src: 'app/css/sass/**/*.sass',
+    src: 'app/css/sass/**/*.s(a|c)ss',
     dest: 'app/css/',
   },
   image: {
