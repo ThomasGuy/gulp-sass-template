@@ -11,30 +11,26 @@ sass.compiler = require('node-sass');
 
 const paths = {
   styles: {
-    src: 'app/css/*.css',
+    src: 'app/css/sass/*.s(c|a)ss',
     dest: 'dist/css/',
   },
   scripts: {
     src: 'app/js/**/*.js',
     dest: 'dist/js/',
   },
-  sass: {
-    src: 'app/css/sass/**/*.s(a|c)ss',
-    dest: 'app/css/',
-  },
   image: {
     src: 'app/img/**/*.*',
     dest: 'dist/img/',
   },
   autoPrefix: {
-    src: 'app/css/**/*.css',
-    dest: 'app/css/',
+    src: 'dist/css/**/*.css',
+    dest: 'dist/css/',
   },
   html: {
     src: 'app/*.html',
     dest: 'dist/',
   },
-  font: {
+  fonts: {
     src: 'app/fonts/*.*',
     dest: 'dist/fonts/',
   },
